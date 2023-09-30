@@ -49,3 +49,8 @@ compatibility_date = "2023-09-22"
 # [[migrations]]
 # tag = "v1"
 # new_classes = ["MyDurableObject"]
+
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "check-performance"
+database_id = "46fa81fb-ab26-4801-9ce1-4952363c83ad"

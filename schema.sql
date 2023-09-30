@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS "Users";
+
+CREATE TABLE "Users" (
+    id INTEGER PRIMARY KEY NOT NULL,
+    username TEXT NOT NULL,
+    email TEXT NOT NULL
+);
