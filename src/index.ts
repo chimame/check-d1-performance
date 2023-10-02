@@ -143,17 +143,11 @@ export default {
     ctx: EventContext<Env, any, any>
   ) {
     try {
-      //const db = connection(env.DATABASE_URL)
+      const db = connection(env.DB)
 
-      //await db.deleteFrom('Users').execute()
-      await env.DB.prepare(
-        "DELETE FROM Users"
-      ).run()
-      for (let i = 0; i < 10; i++) {
-        //await sql.raw(`INSERT INTO "Users" ("id", "username", "email") VALUES (${i}, 'test${i}', 'test${i}@example${i}.com')`).execute(db)
-        await env.DB.prepare(
-          `INSERT INTO "Users" ("id", "username", "email") VALUES (${i}, 'test${i}', 'test${i}@example${i}.com')`
-        ).run()
+      await db.deleteFrom('Users').execute()
+      for (let i = 0; i < 1200; i++) {
+        await sql.raw(`INSERT INTO "Users" ("id", "username", "email") VALUES (${i}, 'test${i}', 'test${i}@example${i}.com')`).execute(db)
       }
     } catch (e) {
       console.log((e as Error).message)
