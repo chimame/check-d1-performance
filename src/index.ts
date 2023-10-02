@@ -135,4 +135,28 @@ app.get("/read/:name/100", async (c) => {
   }
 })
 
-export default app
+export default {
+  ...app,
+  async scheduled(
+    event: ScheduledEvent,
+    env: Env,
+    ctx: EventContext<Env, any, any>
+  ) {
+    try {
+      //const db = connection(env.DATABASE_URL)
+
+      //await db.deleteFrom('Users').execute()
+      await env.DB.prepare(
+        "DELETE FROM Users"
+      ).run()
+      for (let i = 0; i < 10; i++) {
+        //await sql.raw(`INSERT INTO "Users" ("id", "username", "email") VALUES (${i}, 'test${i}', 'test${i}@example${i}.com')`).execute(db)
+        await env.DB.prepare(
+          `INSERT INTO "Users" ("id", "username", "email") VALUES (${i}, 'test${i}', 'test${i}@example${i}.com')`
+        ).run()
+      }
+    } catch (e) {
+      console.log((e as Error).message)
+    }
+  }
+}
