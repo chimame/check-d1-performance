@@ -3,19 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "check": "npx @biomejs/biome check --write ./src",
     "deploy": "wrangler deploy",
-    "start": "wrangler dev --var DATABASE_URL:${DATABASE_URL}"
+    "start": "wrangler dev --var DATABASE_URL:${DATABASE_URL}",
+    "cf-typegen": "wrangler types"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230419.0",
-    "@types/pg": "^8.10.3",
-    "typescript": "^5.0.4",
-    "wrangler": "^3.0.0"
+    "@biomejs/biome": "1.9.4",
+    "@types/pg": "^8.15.1",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.14.4"
   },
   "dependencies": {
-    "hono": "^3.7.2",
-    "kysely": "^0.26.3",
-    "kysely-d1": "^0.3.0",
-    "pg": "^8.11.3"
+    "hono": "^4.7.9",
+    "kysely": "^0.28.2",
+    "kysely-d1": "^0.4.0",
+    "pg": "^8.15.6"
   }
 }

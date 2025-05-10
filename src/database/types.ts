@@ -1,11 +1,11 @@
-import { ColumnType, Generated, Insertable, Selectable, Updateable } from 'kysely'
+import type { Generated } from "kysely";
 
 export interface DB {
-  Users: UsersTable
+	Users: UsersTable;
 }
 
 export interface UsersTable {
-  id: Generated<number>
-  username: string
-  email: string
+	id: Generated<number>;
+	username: string;
+	email: string;
 }

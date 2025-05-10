@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "check-d1-performance",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-05-05",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "DATABASE_URL": "YOUR_DATABASE_URI"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "c6e9946d-51cb-4083-b69b-260ea26ff81a",
+      "database_name": "check-d1-performance"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "CHECK_SQLITE_DURABLE_OBJECT",
+        "class_name": "CheckSqliteDurableObject",
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["CheckSqliteDurableObject"]
+    }
+  ]
+}
